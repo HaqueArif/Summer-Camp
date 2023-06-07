@@ -1,0 +1,43 @@
+.login{
+    position: relative;
+}
+.login::before{
+    position:absolute;
+    content: '';
+    width: 100%;
+    height: 8px;
+    bottom:100%;
+    left: 8px;
+    background-color: rgba(168, 133, 245, 0.552);
+}
+.login::after{
+    position:absolute;
+    content: '';
+    width: 8px;
+    height:100% ;
+    bottom:8px;
+    left: 100%;
+    background-color: rgba(168, 133, 245, 0.552);
+}
+
+.register{
+    position: relative;
+}
+.register::before{
+    position:absolute;
+    content: '';
+    width: 100%;
+    height: 8px;
+    top:100%;
+    left: 8px;
+    background-color: #FF5A00;
+}
+.register::after{
+    position:absolute;
+    content: '';
+    width: 8px;
+    height:100% ;
+    top:8px;
+    left: 100%;
+    background-color: #FF5A00;
+}
