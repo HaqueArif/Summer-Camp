@@ -4,6 +4,8 @@ import './Login.css'
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useState } from 'react';
 
 const Login = () => {
 
@@ -12,6 +14,11 @@ const Login = () => {
     const { signIn, signInWithGoogle } = useAuth()
 
     const from = location.state?.from?.pathname || '/';
+
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const {
         register,
@@ -55,10 +62,10 @@ const Login = () => {
                     }
                 })
                 reset();
-                navigate(from, {replace: true});
+                navigate(from, { replace: true });
             })
     }
-    
+
 
 
     return (
@@ -86,11 +93,25 @@ const Login = () => {
                             <label className="label">
                                 <span className="text-white text-xl font-bold">Password</span>
                             </label>
-                            <input type="password" name='password' {...register('password', { maxLength: 16, minLength: 6, pattern: /(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*])/, required: true })} placeholder="password" className="w-full px-5 py-3" />
+                            <div className='relative'>
+                                <input type={showPassword ? 'text' : 'password'} name='password' {...register('password', { maxLength: 16, minLength: 6, pattern: /(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*])/, required: true })} placeholder="password" className="w-full px-5 py-3" />
+                                {showPassword ? (
+                                    <FaEyeSlash
+                                        className="absolute top-4 right-2 cursor-pointer"
+                                        onClick={togglePasswordVisibility}
+                                    />
+                                ) : (
+                                    <FaEye
+                                        className="absolute top-4 right-2 cursor-pointer"
+                                        onClick={togglePasswordVisibility}
+                                    />
+                                )}
+                            </div>
                             {errors.password?.type === 'required' && <p className='text-red-500'>Password is required.</p>}
                             {errors.password?.type === 'minLength' && <p className='text-red-500'>Password must be 6 characters.</p>}
                             {errors.password?.type === 'maxLength' && <p className='text-red-500'>Password  max length 16 characters.</p>}
                             {errors.password?.type === 'pattern' && <p className='text-red-500'>Password must have one Uppercase one lower case, one number characters and on spacial characters.</p>}
+
                             <label className="label">
                                 <a href="#" className="text-white text-xl font-bold">Forgot password?</a>
                             </label>
@@ -99,11 +120,14 @@ const Login = () => {
                             <input type='submit' className="btn font-bold hover:bg-[#3870E8] hover:text-white border-none bg-[#C0E246]  text-2xl mr-5 px-7 py-1" value='Login' />
                         </div>
                     </form>
-                    <div onClick={handleGoogleSignIn} className=' cursor-pointer mt-5 shadow-xl hover:bg-[#ff5a0080] duration-200 py-5 flex justify-center items-center gap-3 bg-[#204FB6] googleStyle'>
-                        <h2 className='text-white text-2xl font-bold'>Continue With Google</h2>
-                        <img src={google} alt="GOOGLE" className='w-10' />
-                    </div>
                     <p className='text-center text-xl mt-5'><small className='text-white'>New Here? </small><Link to="/signup" className='text-warning link'>Sign up</Link></p>
+                    <p className='text-center text-xl mt-2 font-bold text-white'>Or</p>
+                    <div onClick={handleGoogleSignIn} className=' cursor-pointer mt-5 shadow-xl hover:bg-[#ff5a0080] duration-200 py-5 flex justify-center items-center  bg-[#204FB6] googleStyle'>
+                        <h2 className='text-white text-2xl font-bold mr-2'>Continue With</h2>
+                        <img src={google} alt="GOOGLE" className='w-10 mr-1' />
+                        <h2 className='text-white text-2xl font-bold'>oogle</h2>
+                    </div>
+                    
                 </div>
             </div>
         </div>
