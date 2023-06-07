@@ -49,9 +49,9 @@ const NavBar = () => {
                             /> : <FaUserCircle className='w-8 h-8 lg:w-12 lg:h-12 rounded-full mr-2' title={user.displayName} />}
 
                             <Link to="/login" onClick={handleLogOut} className="px-5 py-3 rounded-md text-white font-bold bg-orange-400 border-none hidden lg:block ">Logout</Link>
-                        </div>) : (<div className="hidden md:inline-block">
-                            <Link to="/login" className="login font-extrabold  bg-[#C0E246] text-2xl mr-5 px-7 py-1">Login</Link>
-                            <Link className="register font-extrabold  bg-[#C0E246] text-2xl mr-3 px-7 py-1">Register</Link>
+                        </div>) : (<div className="hidden md:flex">
+                            <div className="campHover"><Link to="/login" className="login font-extrabold hover:bg-white bg-[#C0E246] text-2xl mr-5 px-7 py-1">Login</Link></div>
+                            <div className="campHover"><Link className="register font-extrabold hover:bg-[#3870E8] hover:text-white bg-[#C0E246] text-2xl mr-3 px-7 py-1">Register</Link></div>
 
                         </div>)}
                 </div>
