@@ -1,17 +1,15 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import bgBanner from '../../assets/loginbg.png'
+import google from '../../assets/google.png'
 import './Login.css'
-import { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
 
-    const [disabled, setDisabled] = useState(true);
     const navigate = useNavigate()
     const location = useLocation()
-    const { signIn } = useAuth()
+    const { signIn, signInWithGoogle } = useAuth()
 
     const from = location.state?.from?.pathname || '/';
 
@@ -28,6 +26,18 @@ const Login = () => {
         }
         return true;
     };
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log('errorrrr', error.message);
+            })
+    }
 
 
     const onSubmit = data => {
@@ -52,13 +62,13 @@ const Login = () => {
 
 
     return (
-        <div className='mainBg'>
+        <div className='mainBg pb-60'>
             <div className=" bgBanner min-h-screen p-5 md:p-5 flex justify-center items-center">
                 <div className="card flex-shrink-0 w-full max-w-md">
                     <div>
                         <h2 className='text-white text-6xl font-bold text-center my-10 '>Sign In To Summer Camp!</h2>
                     </div>
-                    <form onSubmit={handleSubmit(onSubmit)} className="shadow-xl bg-[#5436ec3a] py-5 px-3 md:p-10">
+                    <form onSubmit={handleSubmit(onSubmit)} className="shadow-2xl bg-[#5436ec3a] hover:bg-[#5436EC] duration-300 py-5 px-3 md:p-10">
                         <div className="">
                             <label className="label">
                                 <span className="text-white text-xl font-bold">Email</span>
@@ -89,6 +99,10 @@ const Login = () => {
                             <input type='submit' className="btn font-bold hover:bg-[#3870E8] hover:text-white border-none bg-white text-[#204FB6] text-2xl mr-5 px-7 py-1" value='Login' />
                         </div>
                     </form>
+                    <div onClick={handleGoogleSignIn} className=' cursor-pointer mt-5 shadow-xl hover:bg-[#ff5a0080] duration-200 py-5 flex justify-center items-center gap-3 bg-[#204FB6] googleStyle'>
+                        <h2 className='text-white text-2xl font-bold'>Continue With Google</h2>
+                        <img src={google} alt="GOOGLE" className='w-10' />
+                    </div>
                     <p className='text-center text-xl mt-5'><small className='text-white'>New Here? </small><Link to="/signup" className='text-warning link'>Sign up</Link></p>
                 </div>
             </div>

@@ -162,7 +162,7 @@ const SignUp = () => {
                             <input type='submit' className="btn font-bold hover:bg-[#3870E8] hover:text-white border-none bg-white text-[#204FB6] text-2xl mr-5 px-7 py-1" value='Login' />
                         </div>
                     </form>
-                    <p className='text-center text-xl mt-5'><small className='text-white'>Already Have An Account? </small><Link to="/signup" className='text-warning link'>Sign in</Link></p>
+                    <p className='text-center text-xl mt-5'><small className='text-white'>Already Have An Account? </small><Link to="/login" className='text-warning link'>Sign in</Link></p>
                 </div>
             </div>
         </div>

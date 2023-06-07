@@ -8,7 +8,7 @@
     height: 8px;
     bottom:100%;
     left: 8px;
-    background-color: rgba(168, 133, 245, 0.552);
+    background-color: #a885f58d;
 }
 .login::after{
     position:absolute;
