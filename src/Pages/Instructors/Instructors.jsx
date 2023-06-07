@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import InstructorCard from "./InstructorCard";
+import './instructors.css'
 
 
 const Instructors = () => {
@@ -14,15 +15,17 @@ const Instructors = () => {
             })
     }, [])
     return (
-        <div className="px-2 xl:px-40 lg:px-10 grid lg:grid-cols-3 md:grid-cols-2 gap-y-20 gap-x-5 py-20">
-            {
-                instructors.map((instructor, index)=>
-                    <InstructorCard
-                    key={index}
-                    instructor={instructor}
-                     ></InstructorCard>
+        <div className="banner">
+            <div className="px-2 xl:px-40 lg:px-10 grid lg:grid-cols-3 md:grid-cols-2 gap-y-20 gap-x-5 py-20 instractBanner">
+                {
+                    instructors.map((instructor, index) =>
+                        <InstructorCard
+                            key={index}
+                            instructor={instructor}
+                        ></InstructorCard>
                     )
-            }
+                }
+            </div>
         </div>
     );
 };
