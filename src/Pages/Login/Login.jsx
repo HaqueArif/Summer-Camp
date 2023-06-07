@@ -30,31 +30,25 @@ const Login = () => {
     };
 
 
-    // const handleLogin = event => {
-    //     event.preventDefault();
-    //     const form = event.target;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     console.log(email, password);
-    //     // signIn(email, password)
-    //     //     .then(result => {
-    //     //         const user = result.user;
-    //     //         console.log(user);
-    //     //         Swal.fire({
-    //     //             title: 'user Login successful',
-    //     //             showClass: {
-    //     //                 popup: 'animate_animated animate_fadeInDown'
-    //     //             },
-    //     //             hideClass: {
-    //     //                 popup: 'animate_animated animate_fadeOutUp'
-    //     //             }
-    //     //         })
-    //     //         navigate(from, {replace: true});
-    //     //     })
-    // }
     const onSubmit = data => {
-        console.log(data)
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire({
+                    title: 'user Login successful',
+                    showClass: {
+                        popup: 'animate_animated animate_fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate_animated animate_fadeOutUp'
+                    }
+                })
+                reset();
+                navigate(from, {replace: true});
+            })
     }
+    
 
 
     return (
