@@ -46,7 +46,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 Swal.fire({
-                    title: 'user Login successful',
+                    title: 'User Login successful',
                     showClass: {
                         popup: 'animate_animated animate_fadeInDown'
                     },
@@ -62,9 +62,9 @@ const Login = () => {
 
 
     return (
-        <div className='mainBg pb-60'>
+        <div className='mainBg'>
             <div className=" bgBanner min-h-screen p-5 md:p-5 flex justify-center items-center">
-                <div className="card flex-shrink-0 w-full max-w-md">
+                <div className="card flex-shrink-0 w-full max-w-md mb-20">
                     <div>
                         <h2 className='text-white text-6xl font-bold text-center my-10 '>Sign In To Summer Camp!</h2>
                     </div>
@@ -96,7 +96,7 @@ const Login = () => {
                             </label>
                         </div>
                         <div className=" loginHover mt-6">
-                            <input type='submit' className="btn font-bold hover:bg-[#3870E8] hover:text-white border-none bg-white text-[#204FB6] text-2xl mr-5 px-7 py-1" value='Login' />
+                            <input type='submit' className="btn font-bold hover:bg-[#3870E8] hover:text-white border-none bg-[#C0E246]  text-2xl mr-5 px-7 py-1" value='Login' />
                         </div>
                     </form>
                     <div onClick={handleGoogleSignIn} className=' cursor-pointer mt-5 shadow-xl hover:bg-[#ff5a0080] duration-200 py-5 flex justify-center items-center gap-3 bg-[#204FB6] googleStyle'>
@@ -111,5 +111,3 @@ const Login = () => {
 };
 
 export default Login;
-
-// style={{backgroundImage: `url(${bgBanner})`}}
