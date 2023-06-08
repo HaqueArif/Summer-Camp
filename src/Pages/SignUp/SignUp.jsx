@@ -3,13 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import google from '../../assets/google.png'
+import loadingGif from '../../assets/loading_indicator.gif'
 
 
 const SignUp = () => {
 
     const navigate = useNavigate()
 
-    const { createUser, updateUserProfile, signInWithGoogle } = useAuth();
+    const {loading, createUser, updateUserProfile, signInWithGoogle } = useAuth();
+
+   
 
     const {
         register,
@@ -19,6 +22,12 @@ const SignUp = () => {
         formState: { errors },
         setError,
     } = useForm();
+
+    if (loading) {
+        return <div className="min-h-screen flex justify-center items-center">
+            <img src={loadingGif} alt="loading" className="w-60" />
+        </div>
+    }
 
     const validateEmail = (value) => {
         if (value && !value.includes('.com')) {

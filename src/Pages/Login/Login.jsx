@@ -5,13 +5,14 @@ import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import loadingGif from '../../assets/loading_indicator.gif'
 import { useState } from 'react';
 
 const Login = () => {
 
     const navigate = useNavigate()
     const location = useLocation()
-    const { signIn, signInWithGoogle } = useAuth()
+    const { loading, signIn, signInWithGoogle } = useAuth()
 
     const from = location.state?.from?.pathname || '/';
 
@@ -26,6 +27,12 @@ const Login = () => {
         reset,
         formState: { errors },
     } = useForm();
+
+    if (loading) {
+        return <div className="min-h-screen flex justify-center items-center">
+            <img src={loadingGif} alt="loading" className="w-60" />
+        </div>
+    }
 
     const validateEmail = (value) => {
         if (value && !value.includes('.com')) {

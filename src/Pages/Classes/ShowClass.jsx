@@ -1,21 +1,34 @@
 import Swal from 'sweetalert2';
 import { useState } from 'react'; // Import useState
 import bg1 from '../../assets/electives_white-sparkle-bg.png'
+import loadingGif from '../../assets/loading_indicator.gif'
+
 import useAuth from '../../hooks/useAuth';
 import './ShowClass.css'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const ShowClass = ({ classData, classes }) => {
-    const { instructor_image, instructor_name } = classData;
-    const { user } = useAuth();
-    const navigate = useNavigate();
 
-    const [buttonDisabled, setButtonDisabled] = useState(false); // Add state for button disabled status
+    const [buttonDisabled, setButtonDisabled] = useState(false); 
+    
+    const { instructor_image, instructor_name } = classData;
+    const { user, loading } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    if (loading) {
+        return <div className="min-h-screen flex justify-center items-center">
+            <img src={loadingGif} alt="loading" className="w-60" />
+        </div>
+    }
+
+    
 
     const handleSelect = (classes) => {
         console.log(classes);
         if (user) {
-            setButtonDisabled(true); // Disable the button before making the request
+            setButtonDisabled(true); 
 
             fetch('http://localhost:5000/classes', {
                 method: "POST",
@@ -51,7 +64,7 @@ const ShowClass = ({ classData, classes }) => {
                 confirmButtonText: 'Log in'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navigate('/login');
+                    navigate('/login', {state:{from: location }});
                 }
             });
         }

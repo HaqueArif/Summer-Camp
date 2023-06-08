@@ -19,7 +19,7 @@ const NavBar = () => {
         <li className="text-xl"><Link to='/'>Home</Link></li>
         <li className="text-xl"><Link to='/instructors'>Instructors</Link></li>
         <li className="text-xl"><Link to="/classes">Classes</Link></li>
-        <li className="text-xl"><Link to="/private">Dashboard</Link></li>
+        <li className="text-xl"><Link to="/dashboard">Dashboard</Link></li>
     </>
 
 
