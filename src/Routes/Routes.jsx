@@ -9,7 +9,9 @@ import Error from "../Pages/Error/Error";
 import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import PrivateRoute from "./PrivateRoutes";
-import Dashboard from "../Pages/Private/Dashboard";
+import Dashboard from "../Pages/Private/Dashboard/Dashboard";
+import SelectedClass from "../Pages/Private/Dashboard/SelectedClass/SelectedClass";
+import EnrolledClasses from "../Pages/Private/Dashboard/EnrolledClasses/EnrolledClasses";
 
 
   export const router = createBrowserRouter([
@@ -39,11 +41,22 @@ import Dashboard from "../Pages/Private/Dashboard";
         },
         
         
-      ]
+      ],
+      
     },
     {
       path: 'dashboard',
-      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      children:[
+        {
+          path:'selectedClasses',
+          element:<SelectedClass></SelectedClass>
+        },
+        {
+          path:'enrolledClasses',
+          element:<EnrolledClasses></EnrolledClasses>
+        },
+      ]
     },
     {
       path: '*',

@@ -9,7 +9,7 @@ const ClasseCard = ({classData}) => {
     return (
         <>
             {
-                classes.map((c, i)=> <ShowClass key={i} classData={classData} classes={c}></ShowClass>)
+                classes.map((c, i)=> <ShowClass key={i} classData={classData} Class={c}></ShowClass>)
             }
         </>
     );

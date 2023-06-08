@@ -6,16 +6,21 @@ import loadingGif from '../../assets/loading_indicator.gif'
 import useAuth from '../../hooks/useAuth';
 import './ShowClass.css'
 import { useLocation, useNavigate } from 'react-router-dom';
+import useSelectedClass from '../../hooks/useSelectedClass';
 
 
-const ShowClass = ({ classData, classes }) => {
+const ShowClass = ({ classData, Class }) => {
 
     const [buttonDisabled, setButtonDisabled] = useState(false); 
-    
-    const { instructor_image, instructor_name } = classData;
     const { user, loading } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const [, refetch] = useSelectedClass();
+    
+    const { instructor_image, instructor_name} = classData;
+    const {name, price, image, seats} = Class;
+
+    
 
     if (loading) {
         return <div className="min-h-screen flex justify-center items-center">
@@ -25,9 +30,10 @@ const ShowClass = ({ classData, classes }) => {
 
     
 
-    const handleSelect = (classes) => {
-        console.log(classes);
-        if (user) {
+    const handleSelect = (Class) => {
+        console.log(Class);
+        if (user && user.email) {
+           
             setButtonDisabled(true); 
 
             fetch('http://localhost:5000/classes', {
@@ -35,11 +41,12 @@ const ShowClass = ({ classData, classes }) => {
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify()
+                body: JSON.stringify({Class, email: user.email})
             })
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
+                    refetch();
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -72,16 +79,16 @@ const ShowClass = ({ classData, classes }) => {
 
     return (
         <div className="card bg-base-100 card-compact shadow-xl">
-            <figure><img src={classes.image} alt="Classes Photo" className="lg:h-60 w-full" /></figure>
+            <figure><img src={image} alt="Class Photo" className="lg:h-60 w-full" /></figure>
             <div className="card-body">
-                <h2 className="card-title">{classes.name}</h2>
+                <h2 className="card-title">{name}</h2>
                 <p><span className="font-bold">Instructor:</span> {instructor_name}</p>
-                <p><span className="font-bold">Available Seats:</span> {classes.seats}</p>
-                <p><span className="font-bold">Price: $</span> {classes.price}</p>
+                <p><span className="font-bold">Available Seats:</span> {seats}</p>
+                <p><span className="font-bold">Price: $</span> {price}</p>
 
                 <div className="card-actions justify-end">
                     <button
-                        onClick={() => handleSelect(classes)}
+                        onClick={() => handleSelect(Class)}
                         className="btn btn-primary"
                         disabled={buttonDisabled} // Set the disabled state of the button
                     >
