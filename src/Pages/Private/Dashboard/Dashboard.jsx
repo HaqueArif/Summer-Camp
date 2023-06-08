@@ -1,12 +1,14 @@
 
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-import { FaBookOpen, FaCheckCircle, FaCheckSquare, FaHistory, FaHome, FaMoneyCheck, FaUser, FaUserCheck, FaUserGraduate } from "react-icons/fa";
+import { FaBookOpen, FaChalkboardTeacher, FaCheckCircle, FaCheckSquare, FaHistory, FaHome, FaMoneyCheck, FaUser, FaUserCheck, FaUserGraduate, FaUsers } from "react-icons/fa";
 
 
 const Dashboard = () => {
 
     const { user } = useAuth()
+
+    const isAdmin = true;
 
     return (
         <div>
@@ -20,13 +22,18 @@ const Dashboard = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                        {/* Sidebar content here */}
-                        <li><Link to="/dashboard" className="text-xl text-white bg-slate-500"><FaHome />User Home</Link></li>
-                        <li><NavLink to="/dashboard/selectedClasses" activeClassName="active"><FaCheckSquare />My Selected Classes</NavLink></li>
-                        <li><NavLink to="/dashboard/enrolledClasses" activeClassName="active"><FaCheckCircle />My Enrolled Classes</NavLink></li>
-                        <li><NavLink to="/dashboard/paymentHistory" activeClassName="active"><FaMoneyCheck />Payment History</NavLink></li>
-                        
-
+                        {
+                            isAdmin ? <>
+                                <li><Link to="/dashboard" className="text-xl text-white bg-slate-500"><FaHome />Admin Home</Link></li>
+                                <li><NavLink to="/dashboard/selectedClasses" activeClassName="active"><FaChalkboardTeacher />Manage Classes</NavLink></li>
+                                <li><NavLink to="/dashboard/manageUsers" activeClassName="active"><FaUsers />Manage Users</NavLink></li>
+                            </> : <>
+                                <li><Link to="/dashboard" className="text-xl text-white bg-slate-500"><FaHome />User Home</Link></li>
+                                <li><NavLink to="/dashboard/selectedClasses" activeClassName="active"><FaCheckSquare />My Selected Classes</NavLink></li>
+                                <li><NavLink to="/dashboard/enrolledClasses" activeClassName="active"><FaCheckCircle />My Enrolled Classes</NavLink></li>
+                                <li><NavLink to="/dashboard/paymentHistory" activeClassName="active"><FaMoneyCheck />Payment History</NavLink></li>
+                            </>
+                        }
                         <div className="divider"></div>
                         <li><NavLink to='/'><FaHome /> Home</NavLink></li>
                         <li><NavLink to='/instructors'><FaUser />Instructor</NavLink></li>

@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
-import google from '../../assets/google.png'
 import loadingGif from '../../assets/loading_indicator.gif'
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
@@ -36,17 +36,7 @@ const SignUp = () => {
         return true;
     };
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                navigate('/')
-            })
-            .catch(error => {
-                console.log('errorrrr', error.message);
-            })
-    }
+    
 
     const onSubmit = data => {
         const { password, confirmPassword } = data;
@@ -180,11 +170,7 @@ const SignUp = () => {
                     </form>
                     <p className='text-center text-xl mt-5'><small className='text-white'>Already Have An Account? </small><Link to="/login" className='text-warning link'>Sign in</Link></p>
                     <p className='text-center text-xl mt-2 font-bold text-white'>Or</p>
-                    <div onClick={handleGoogleSignIn} className=' cursor-pointer mt-5 shadow-xl hover:bg-[#ff5a0080] duration-200 py-5 flex justify-center items-center  bg-[#204FB6] googleStyle'>
-                        <span className='text-white text-2xl font-bold mr-2'>Continue With</span>
-                        <img src={google} alt="GOOGLE" className='w-10 mr-1' />
-                        <span className='text-white text-2xl font-bold'>oogle</span>
-                    </div>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>
