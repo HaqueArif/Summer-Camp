@@ -64,38 +64,30 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoUrl)
                     .then(() => {
 
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Sign up successful',
-                            showConfirmButton: false,
-                            timer: 1500
+                        const saveUser = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/users', {
+                            method: "POST",
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
                         })
-                        reset()
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                reset()
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Sign up successful',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                navigate('/')
+                            }
+                        })
+                        
                         navigate('/')
-                        // const saveUser = { name: data.name, email: data.email }
-                        // fetch('http://localhost:5000/users', {
-                        //     method: "POST",
-                        //     headers: {
-                        //         'content-type': 'application/json'
-                        //     },
-                        //     body: JSON.stringify(saveUser)
-                        // })
-                        // .then(res => res.json())
-                        // .then(data => {
-                        //     if (data.insertedId) {
-                        //         reset()
-                        //         Swal.fire({
-                        //             position: 'top-end',
-                        //             icon: 'success',
-                        //             title: 'Sign up successful',
-                        //             showConfirmButton: false,
-                        //             timer: 1500
-                        //         })
-                        //         navigate('/')
-                        //     }
-                        // })
-
                     })
                     .catch(error => console.log(error))
             })

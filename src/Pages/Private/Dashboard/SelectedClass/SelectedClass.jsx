@@ -9,40 +9,40 @@ const SelectedClass = () => {
 
     const { user } = useAuth()
 
-    const [classes] = useSelectedClass()
+    const [classes, refetch] = useSelectedClass()
     console.log(classes);
     const total = classes.reduce((sum, Class) => Class.Class.price + sum, 0)
     console.log(total);
 
     const handleDelete = (Class) => {
-        console.log(item);
+        console.log(Class);
 
-        // Swal.fire({
-        //     title: 'Are you sure?',
-        //     text: "You won't be able to revert this!",
-        //     icon: 'warning',
-        //     showCancelButton: true,
-        //     confirmButtonColor: '#3085d6',
-        //     cancelButtonColor: '#d33',
-        //     confirmButtonText: 'Yes, delete it!'
-        // }).then((result) => {
-        //     if (result.isConfirmed) {
-        //         fetch(`http://localhost:5000/carts/${item._id}`, {
-        //             method: 'DELETE'
-        //         })
-        //             .then(res => res.json())
-        //             .then(data => {
-        //                 if (data.deletedCount > 0) {
-        //                     refetch();
-        //                     Swal.fire(
-        //                         'Deleted!',
-        //                         'Your food has been deleted.',
-        //                         'success'
-        //                     )
-        //                 }
-        //             })
-        //     }
-        // })
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/classes/${Class._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your food has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
     }
 
     return (
