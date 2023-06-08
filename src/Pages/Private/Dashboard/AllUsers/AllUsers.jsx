@@ -17,20 +17,28 @@ const AllUsers = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>#</th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {}
-                        <tr className="hover">
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
+                        {
+                            users.map((user, i)=>
+                            <tr className="hover" key={i} >
+                            <th>{i + 1}</th>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            
+                            <td>{user.role === 'admin' ? 'Admin' : user.role === 'instructor' ? 'Instructor' : 'User'}</td>
+
+                            <td><button className="btn">Delete</button></td>
+                            
+                        </tr>  )
+                        }
+                        
                     </tbody>
                 </table>
             </div>
