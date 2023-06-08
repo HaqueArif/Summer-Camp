@@ -174,15 +174,15 @@ const SignUp = () => {
 
 
                         <div className=" loginHover mt-6">
-                            <input type='submit' className="btn font-bold hover:bg-[#3870E8] hover:text-white border-none bg-white text-[#204FB6] text-2xl mr-5 px-7 py-1" value='Login' />
+                            <input type='submit' className="btn font-bold hover:bg-[#3870E8] hover:text-white border-none bg-[#D9EB22] text-[#204FB6] text-2xl mr-5 px-7 py-1" value='Register' />
                         </div>
                     </form>
                     <p className='text-center text-xl mt-5'><small className='text-white'>Already Have An Account? </small><Link to="/login" className='text-warning link'>Sign in</Link></p>
                     <p className='text-center text-xl mt-2 font-bold text-white'>Or</p>
                     <div onClick={handleGoogleSignIn} className=' cursor-pointer mt-5 shadow-xl hover:bg-[#ff5a0080] duration-200 py-5 flex justify-center items-center  bg-[#204FB6] googleStyle'>
-                        <h2 className='text-white text-2xl font-bold mr-2'>Continue With</h2>
+                        <span className='text-white text-2xl font-bold mr-2'>Continue With</span>
                         <img src={google} alt="GOOGLE" className='w-10 mr-1' />
-                        <h2 className='text-white text-2xl font-bold'>oogle</h2>
+                        <span className='text-white text-2xl font-bold'>oogle</span>
                     </div>
                 </div>
             </div>

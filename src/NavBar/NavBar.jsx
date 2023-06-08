@@ -16,10 +16,10 @@ const NavBar = () => {
     }
 
     const navOptions = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/instructors'>Instructors</Link></li>
-        <li><Link to="/order/salad">Classes</Link></li>
-        <li><Link to="/private">Dashboard</Link></li>
+        <li className="text-xl"><Link to='/'>Home</Link></li>
+        <li className="text-xl"><Link to='/instructors'>Instructors</Link></li>
+        <li className="text-xl"><Link to="/classes">Classes</Link></li>
+        <li className="text-xl"><Link to="/private">Dashboard</Link></li>
     </>
 
 
@@ -30,8 +30,16 @@ const NavBar = () => {
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu z-10  dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-64 h-96">
                         {navOptions}
+                        {
+                            user ? <Link to="/login" onClick={handleLogOut} className="px-5 py-3 rounded-md text-white font-bold bg-orange-400 border-none ">Logout</Link> :
+                                <>
+                                    <div className="campHover  my-5"><Link to="/login" className="login shadow-xl font-extrabold hover:bg-white hover:text-[#204FB6] bg-[#C0E246] text-md mr-5 px-8 py-3">Login</Link></div>
+                                    <div className="campHover mt-3"><Link to="/signup" className="register font-extrabold text-[#204FB6] hover:bg-[#3870E8] hover:text-white bg-white border  shadow-xl text-md mr-3 px-8 py-3">Register</Link></div>
+                                </>
+                        }
+
                     </ul>
                 </div>
                 <a className="btn btn-ghost uppercase text-3xl">SummerScape</a>
@@ -49,8 +57,8 @@ const NavBar = () => {
 
                         <Link to="/login" onClick={handleLogOut} className="px-5 py-3 rounded-md text-white font-bold bg-orange-400 border-none hidden lg:block ">Logout</Link>
                     </div>) : (<div className="hidden md:flex">
-                        <div className="campHover"><Link to="/login" className="login font-extrabold hover:bg-white hover:text-[#204FB6] bg-[#C0E246] text-2xl mr-5 px-7 py-1">Login</Link></div>
-                        <div className="campHover"><Link to="/signup" className="register font-extrabold text-[#204FB6] hover:bg-[#3870E8] hover:text-white bg-white text-2xl mr-3 px-7 py-1">Register</Link></div>
+                        <div className="campHover"><Link to="/login" className="login font-extrabold hover:bg-white hover:text-[#204FB6] bg-[#C0E246] text-2xl mr-5 px-8 py-3">Login</Link></div>
+                        <div className="campHover"><Link to="/signup" className="register font-extrabold text-[#204FB6] hover:bg-[#3870E8] hover:text-white bg-white text-2xl mr-3 px-8 py-3">Register</Link></div>
 
                     </div>)}
             </div>
