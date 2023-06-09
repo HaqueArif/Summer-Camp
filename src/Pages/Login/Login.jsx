@@ -5,7 +5,6 @@ import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import loadingGif from '../../assets/loading_indicator.gif'
 import { useState } from 'react';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
@@ -29,11 +28,7 @@ const Login = () => {
         formState: { errors },
     } = useForm();
 
-    if (loading) {
-        return <div className="min-h-screen flex justify-center items-center">
-            <img src={loadingGif} alt="loading" className="w-60" />
-        </div>
-    }
+    
 
     const validateEmail = (value) => {
         if (value && !value.includes('.com')) {
@@ -115,6 +110,7 @@ const Login = () => {
                                     />
                                 )}
                             </div>
+                            <p className='text-red-500'>{errors.message}</p>
                             {errors.password?.type === 'required' && <p className='text-red-500'>Password is required.</p>}
                             {errors.password?.type === 'minLength' && <p className='text-red-500'>Password must be 6 characters.</p>}
                             {errors.password?.type === 'maxLength' && <p className='text-red-500'>Password  max length 16 characters.</p>}

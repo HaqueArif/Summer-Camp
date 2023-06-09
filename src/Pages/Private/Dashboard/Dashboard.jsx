@@ -1,14 +1,15 @@
 
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { FaBookOpen, FaChalkboardTeacher, FaCheckCircle, FaCheckSquare, FaHistory, FaHome, FaMoneyCheck, FaUser, FaUserCheck, FaUserGraduate, FaUsers } from "react-icons/fa";
+import useAdmin from "../../../hooks/useAdmin";
 
 
 const Dashboard = () => {
 
     const { user } = useAuth()
-
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+   
 
     return (
         <div>
@@ -25,7 +26,7 @@ const Dashboard = () => {
                         {
                             isAdmin ? <>
                                 <li><Link to="/dashboard" className="text-xl text-white bg-slate-500"><FaHome />Admin Home</Link></li>
-                                <li><NavLink to="/dashboard/selectedClasses" activeClassName="active"><FaChalkboardTeacher />Manage Classes</NavLink></li>
+                                <li><NavLink to="/dashboard/manageClasses" activeClassName="active"><FaChalkboardTeacher />Manage Classes</NavLink></li>
                                 <li><NavLink to="/dashboard/manageUsers" activeClassName="active"><FaUsers />Manage Users</NavLink></li>
                             </> : <>
                                 <li><Link to="/dashboard" className="text-xl text-white bg-slate-500"><FaHome />User Home</Link></li>

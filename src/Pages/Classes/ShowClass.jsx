@@ -22,11 +22,7 @@ const ShowClass = ({ classData, Class }) => {
 
     
 
-    if (loading) {
-        return <div className="min-h-screen flex justify-center items-center">
-            <img src={loadingGif} alt="loading" className="w-60" />
-        </div>
-    }
+   
 
     
 

@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
-import loadingGif from '../../assets/loading_indicator.gif'
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 
@@ -10,7 +9,7 @@ const SignUp = () => {
 
     const navigate = useNavigate()
 
-    const {loading, createUser, updateUserProfile, signInWithGoogle } = useAuth();
+    const { createUser, updateUserProfile,  } = useAuth();
 
    
 
@@ -23,11 +22,7 @@ const SignUp = () => {
         setError,
     } = useForm();
 
-    if (loading) {
-        return <div className="min-h-screen flex justify-center items-center">
-            <img src={loadingGif} alt="loading" className="w-60" />
-        </div>
-    }
+   
 
     const validateEmail = (value) => {
         if (value && !value.includes('.com')) {

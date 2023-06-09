@@ -3,6 +3,7 @@ import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { FaTrash } from "react-icons/fa";
 import useSelectedClass from "../../../../hooks/useSelectedClass";
+import { Link } from "react-router-dom";
 
 
 const SelectedClass = () => {
@@ -53,7 +54,7 @@ const SelectedClass = () => {
                 </p>
                 <div className="flex items-center gap-3">
                     <p className="text-3xl font-bold">Total: <span className="text-3xl font-bold text-orange-700">${total}</span></p>
-                    <button className="btn text-xl shadow-md font-bold hover:bg-[#C0E246] text-white bg-orange-700">Pay</button>
+                    <Link to='/dashboard/payment' className="btn text-xl shadow-md font-bold hover:bg-[#C0E246] text-white bg-orange-700">Pay</Link>
                 </div>
             </div>
 
