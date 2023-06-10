@@ -74,15 +74,16 @@ const handleSubmit = async(event)=>{
             date: new Date(),
             quantity: classes.length,
             selectedClass: classes.map(Class => Class._id),
-            class: classes.map(Class => Class.Class.class_id),
-            status: 'service pending',
-            itemName: classes.map(Class => Class.Class.name),
-            itemImage: classes.map(Class => Class.Class.image)
+            classes: classes.map(Class => ({
+                classId: Class.Class.class_id,
+                className: Class.Class.name,
+                classImage: Class.Class.image
+              })),
         }
         axiosSecure.post('/payments', payment)
         .then(res=>{
             console.log(res.data);
-            if(res.data.result.insertedId){
+            if(res.data.insertedId){
                 // 
             }
         })

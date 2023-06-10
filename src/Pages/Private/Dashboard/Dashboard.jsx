@@ -1,7 +1,7 @@
 
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-import { FaBookOpen, FaChalkboardTeacher, FaCheckCircle, FaCheckSquare, FaHistory, FaHome, FaMoneyCheck, FaUser, FaUserCheck, FaUserGraduate, FaUsers } from "react-icons/fa";
+import { FaBars, FaBookOpen, FaChalkboardTeacher, FaCheckCircle, FaCheckSquare, FaHistory, FaHome, FaMoneyCheck, FaUser, FaUserCheck, FaUserGraduate, FaUsers } from "react-icons/fa";
 import useAdmin from "../../../hooks/useAdmin";
 
 
@@ -12,17 +12,17 @@ const Dashboard = () => {
    
 
     return (
-        <div>
-            <div className="drawer lg:drawer-open">
+        <div className="relative">
+            <div className="drawer  lg:drawer-open ">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content px-20 pt-20">
+                <div className="drawer-content mt-20 md:px-20 md:pt-20">
                     <Outlet></Outlet>
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                    <label htmlFor="my-drawer-2" className="absolute top-0 left-0 btn drawer-button lg:hidden"><FaBars/></label>
 
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                    <ul className="menu p-4  h-full bg-base-200 text-base-content">
                         {
                             isAdmin ? <>
                                 <li><Link to="/dashboard" className="text-xl text-white bg-slate-500"><FaHome />Admin Home</Link></li>

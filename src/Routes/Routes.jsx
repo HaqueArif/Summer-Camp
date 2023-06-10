@@ -16,6 +16,7 @@ import AllUsers from "../Pages/Private/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "./AdminRoute";
 import ManageClass from "../Pages/Private/Dashboard/ManageClass/ManageClass";
 import Payment from "../Pages/Private/Dashboard/Payment/Payment";
+import PaymentHistory from "../Pages/Private/Dashboard/PaymentHistory/PaymentHistory";
 
 
   export const router = createBrowserRouter([
@@ -63,6 +64,10 @@ import Payment from "../Pages/Private/Dashboard/Payment/Payment";
         {
           path:'payment',
           element:<Payment></Payment>
+        },
+        {
+          path: 'paymentHistory',
+          element:<PaymentHistory></PaymentHistory>
         },
         {
           path: 'manageUsers',

@@ -8,15 +8,20 @@ import { Link } from "react-router-dom";
 
 const SelectedClass = () => {
 
-    const { user } = useAuth()
+    const { user, loading } = useAuth()
 
     const [classes, refetch] = useSelectedClass()
+    
+    
+    // if (!classes) {
+    //     refetch();
+    // }
     console.log(classes);
     const total = classes.reduce((sum, Class) => Class.Class.price + sum, 0)
     console.log(total);
-
+    
     const handleDelete = (Class) => {
-        console.log(Class);
+        // console.log(Class);
 
         Swal.fire({
             title: 'Are you sure?',
@@ -45,6 +50,7 @@ const SelectedClass = () => {
             }
         })
     }
+    
 
     return (
         <div>
