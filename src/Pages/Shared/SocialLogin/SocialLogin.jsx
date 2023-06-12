@@ -19,7 +19,7 @@ const SocialLogin = () => {
 
 
                 const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
-                fetch('http://localhost:5000/users', {
+                fetch('https://summer-camp-school-server-steel.vercel.app/users', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
@@ -34,10 +34,10 @@ const SocialLogin = () => {
     }
 
     return (
-        <div onClick={handleGoogleSignIn} className=' cursor-pointer mt-5 shadow-xl hover:bg-[#ff5a0080] duration-200 py-5 flex justify-center items-center  bg-[#204FB6] googleStyle'>
-            <span className='text-white text-2xl font-bold mr-2'>Continue With</span>
-            <img src={google} alt="GOOGLE" className='w-10 mr-1' />
-            <span className='text-white text-2xl font-bold'>oogle</span>
+        <div onClick={handleGoogleSignIn} className=' cursor-pointer w-full md:w-10/12 mx-auto mt-5 shadow-xl hover:bg-[#ff5a0080] duration-200 py-5 flex justify-center items-center  bg-[#204FB6] googleStyle'>
+            <span className='text-white md:text-xl font-bold mr-2'>Continue With</span>
+            <img src={google} alt="GOOGLE" className='w-6 md:w-10 mr-1' />
+            <span className='text-white md:text-xl font-bold'>oogle</span>
         </div>
     );
 };

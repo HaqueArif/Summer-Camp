@@ -9,7 +9,7 @@ const SignUp = () => {
 
     const navigate = useNavigate()
 
-    const { createUser, updateUserProfile,  } = useAuth();
+    const { createUser, updateUserProfile, logOut } = useAuth();
 
    
 
@@ -50,7 +50,7 @@ const SignUp = () => {
                     .then(() => {
 
                         const saveUser = { name: data.name, email: data.email }
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://summer-camp-school-server-steel.vercel.app/users', {
                             method: "POST",
                             headers: {
                                 'content-type': 'application/json'
@@ -68,11 +68,12 @@ const SignUp = () => {
                                     showConfirmButton: false,
                                     timer: 1500
                                 })
-                                navigate('/')
+                                logOut();
+                                navigate('/login')
                             }
                         })
                         
-                        navigate('/')
+                        
                     })
                     .catch(error => console.log(error))
             })
@@ -83,10 +84,10 @@ const SignUp = () => {
         <div className='mainBg'>
             <div className=" bgBanner min-h-screen p-5 md:p-5 flex justify-center items-center">
                 <div className="card flex-shrink-0 w-full max-w-2xl mb-20">
-                    <div className="md:w-96 mx-auto">
+                    <div className="md:w-2xl mx-auto">
                         <h2 className='text-white text-6xl font-bold text-center my-10 '>Register For Summer Camp!</h2>
                     </div>
-                    <form onSubmit={handleSubmit(onSubmit)} className="shadow-xl bg-[#5436ec3a] py-5 px-3 md:px-20 md:py-10 hover:bg-[#5436EC] duration-300">
+                    <form onSubmit={handleSubmit(onSubmit)} className="formLogin w-full shadow-xl bg-[#5436ec3a] py-5 px-3 md:px-20 md:py-10 hover:bg-[#5436EC] duration-300">
                         <div className="md:flex gap-3">
                             <div className="w-full">
                                 <label className="label">

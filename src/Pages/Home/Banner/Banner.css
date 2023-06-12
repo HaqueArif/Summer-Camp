@@ -1,0 +1,34 @@
+.heroBanner {
+    background: url(../../../assets/summer-header-bg@2x.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bannerNav {
+    position: relative;
+}
+
+.bannerNav::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 8px;
+    top: 100%;
+    left: 8px;
+    background-color: #fe7595;
+}
+
+.bannerNav::after {
+    position: absolute;
+    content: '';
+    width: 8px;
+    height: 100%;
+    top: 8px;
+    left: 100%;
+    background-color: #fe7595;
+}
+.bannerBottom{
+    z-index: 1;
+}
+
+

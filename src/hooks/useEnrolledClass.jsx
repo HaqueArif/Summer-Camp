@@ -7,7 +7,6 @@ const useEnrolledClass = () => {
 
     const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-
     const { refetch, data: payments = [] } = useQuery({
         queryKey: [ user?.email],
         enabled: !loading,

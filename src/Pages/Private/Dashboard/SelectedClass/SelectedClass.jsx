@@ -13,12 +13,10 @@ const SelectedClass = () => {
     const [classes, refetch] = useSelectedClass()
     
     
-    // if (!classes) {
-    //     refetch();
-    // }
+    
     console.log(classes);
-    const total = classes.reduce((sum, Class) => Class.Class.price + sum, 0)
-    console.log(total);
+    const total = classes.reduce((sum, Class) => Class.price + sum, 0)
+    // console.log(total);
     
     const handleDelete = (Class) => {
         // console.log(Class);
@@ -33,7 +31,7 @@ const SelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/classes/${Class._id}`, {
+                fetch(`https://summer-camp-school-server-steel.vercel.app/classes/${Class._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -89,15 +87,15 @@ const SelectedClass = () => {
                                         <div className="flex items-center space-x-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle w-20">
-                                                    <img src={Class.Class.image} alt="Avatar Tailwind CSS Component" />
+                                                    <img src={Class.image} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        {Class.Class.name}
+                                        {Class.name}
                                     </td>
-                                    <td>${Class.Class.price}</td>
+                                    <td>${Class.price}</td>
                                     <th>
                                         <button onClick={() => handleDelete(Class)} className="btn btn-square bg-red-500"><FaTrash /></button>
                                     </th>

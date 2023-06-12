@@ -1,12 +1,36 @@
+
+
+
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import './CheckoutForm.css'
+import { useNavigate } from "react-router-dom";
 
 
-const CheckOutForm = ({price , classes}) => {
+const CheckOutForm = ({price, classes}) => {
 
+    const navigate = useNavigate()
+
+    const [enrolledClasses] = classes.map(({class_id, name, image, price, seats, students, activities, details, email }) => ({
+        // _id,
+        class_id,
+        className: name,
+        image,
+        price: parseInt(price),
+        seats: parseInt(seats),
+        students: parseInt(students),
+        activities,
+        details,
+        email
+      }));
+
+      const {class_id, className, image, seats, students} = enrolledClasses;
+
+      console.log(enrolledClasses.class_id);
+
+    
 const stripe = useStripe();
 const elements = useElements();
 const {user} = useAuth()
@@ -68,23 +92,23 @@ const handleSubmit = async(event)=>{
         setTransactionId(paymentIntent.id)
         // const transactionId = paymentIntent.id;
         const payment = {
+            classId: classes.map(Class => Class.class_id),
             email: user?.email,
             transactionId: paymentIntent.id,
             price,
             date: new Date(),
-            quantity: classes.length,
-            selectedClass: classes.map(Class => Class._id),
-            classes: classes.map(Class => ({
-                classId: Class.Class.class_id,
-                className: Class.Class.name,
-                classImage: Class.Class.image
-              })),
+            className,
+            image,
+            class_id,
+            seats,
+            students
         }
         axiosSecure.post('/payments', payment)
         .then(res=>{
             console.log(res.data);
             if(res.data.insertedId){
                 // 
+                navigate('/dashboard/selectedClasses')
             }
         })
       }

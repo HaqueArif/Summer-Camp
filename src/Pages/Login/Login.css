@@ -1,6 +1,5 @@
 .mainBg{
     background-image: url('../../assets/pattern-blue@2x.png');
-    /* background-repeat: no-repeat; */
     background-position: center;
     
 }
@@ -10,10 +9,11 @@
     background-repeat: no-repeat;
 }
 
-form{
+.formLogin{
     position: relative;
+    
 }
-form::before{
+.formLogin::before{
     position:absolute;
     content: '';
     width: 100%;
@@ -22,7 +22,7 @@ form::before{
     left: 20px;
     background-color: #ff5a0080;
 }
-form::after{
+.formLogin::after{
     position:absolute;
     content: '';
     width: 20px;

@@ -1,0 +1,52 @@
+.homeBanner{
+    background: url(../../../assets/electives_white-sparkle-bg.png);
+}
+
+
+.popularBg{
+    background: url(../../../assets/summer-dark-orange-bg@2x-1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.text-title{
+    position: relative;
+}
+.text-title::before{
+    position:absolute;
+    content: '';
+    width: 100%;
+    height: 20px;
+    bottom:100%;
+    left: 20px;
+    background-color: #C0E246;
+}
+.text-title::after{
+    position:absolute;
+    content: '';
+    width: 20px;
+    height:100% ;
+    bottom:20px;
+    left: 100%;
+    background-color: #C0E246;
+}
+
+.hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-effect:hover {
+    transform: rotate(10deg) scale(1.3);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+.hover-effect2{
+    transition: transform 1s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-effect2:hover {
+    transform: rotate(-365deg) scale(1.3);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
