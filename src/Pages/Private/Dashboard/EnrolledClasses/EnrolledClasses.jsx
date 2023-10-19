@@ -7,12 +7,7 @@ import { FaCheckCircle } from "react-icons/fa";
 const EnrolledClasses = () => {
 
     const [payments] = useEnrolledClass();
-
-
-
-
-
-
+    
     return (
         <div className="overflow-x-auto w-full mb-40">
             <table className="table w-full">

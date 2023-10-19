@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 const useClasses = () => {
@@ -6,7 +6,7 @@ const useClasses = () => {
     const [allClasses, setAllClasses] = useState([]);
     console.log(allClasses)
     useEffect(() => {
-        fetch('https://summer-camp-school-server-steel.vercel.app/instructors')
+        fetch('http://localhost:5000/instructors')
             .then(res => res.json())
             .then(data => {
                 setAllClasses(data)

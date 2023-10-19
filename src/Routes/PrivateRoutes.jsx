@@ -5,9 +5,9 @@ import loadingGif from '../assets/loading_indicator.gif'
 
 
 const PrivateRoute = ({ children }) => {
-    const navigate = useNavigate()
 
-    const { user, loading, setLoading } = useAuth()
+    const navigate = useNavigate();
+    const { user, loading } = useAuth();
     const location = useLocation();
     
     if (loading) {

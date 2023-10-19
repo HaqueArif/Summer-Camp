@@ -7,7 +7,7 @@ const PopularInstructors = () => {
     
     console.log(classes);
     useEffect(() => {
-        fetch('https://summer-camp-school-server-steel.vercel.app/instructors')
+        fetch('http://localhost:5000/instructors')
             .then(res => res.json())
             .then(data => {
                 console.log(data);

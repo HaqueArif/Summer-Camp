@@ -9,7 +9,7 @@ const useMyClasses = () => {
         queryKey: [ 'myClasses', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const response = await axiosSecure.get(`/instructors?email=${user.email}`);
+            const response = await axiosSecure.get(`/users/instructor/?email=${user.email}`);
             return response.data;
         },
     });

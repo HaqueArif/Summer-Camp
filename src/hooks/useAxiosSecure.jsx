@@ -4,20 +4,22 @@ import axios from "axios";
 import useAuth from "./useAuth";
 
 
-const axiosSecure = axios.create({
-    baseURL: 'https://summer-camp-school-server-steel.vercel.app',
-})
+
 
 const useAxiosSecure = () => {
-    const {logOut} = useAuth()
-    const navigate = useNavigate()
+
+    const {logOut} = useAuth();
+    const navigate = useNavigate();
     
-    
+    const axiosSecure = axios.create({
+        baseURL: 'http://localhost:5000',
+    })
+
     useEffect(()=>{
         axiosSecure.interceptors.request.use((config)=>{
             const token = localStorage.getItem('access-token')
             if(token) {
-                config.headers.Authorization = `Bearer ${token}`
+                config.headers.Authorization = `Bearer ${token}`;
             }
             return config;
         });

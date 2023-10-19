@@ -8,7 +8,7 @@ const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
     console.log(instructors)
     useEffect(() => {
-        fetch("https://summer-camp-school-server-steel.vercel.app/instructors")
+        fetch("http://localhost:5000/instructors")
           .then((res) => res.json())
           .then((data) => {
             const filteredClasses = data.filter(

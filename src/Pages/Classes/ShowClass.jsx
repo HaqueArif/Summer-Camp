@@ -48,7 +48,7 @@ const ShowClass = ({ classData, Class }) => {
 
 
 
-                fetch('https://summer-camp-school-server-steel.vercel.app/classes', {
+                fetch('http://localhost:5000/classes', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
