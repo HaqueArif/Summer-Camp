@@ -90,7 +90,7 @@ const ShowClass = ({ classData, Class }) => {
         }
     }
 
-    const cardClassName = seats === 0 ? 'card bg-red-500 card-compact border-2 rounded-tl-3xl rounded-br-3xl shadow-xl' : 'card bg-base-100 card-compact border border-[#bbee02] rounded-tl-3xl rounded-br-3xl shadow-xl relative';
+    const cardClassName = seats === 0 ? 'card bg-red-500 card-compact border-2 rounded-tl-3xl rounded-br-3xl shadow-xl' : 'card bg-base-100 card-compact border border-[#bbee02] rounded-tl-3xl rounded-br-3xl shadow-lg relative';
     return (
         <div className={cardClassName}>
             <figure><img src={image} alt="Class Photo" className="lg:h-60 w-full" /></figure>

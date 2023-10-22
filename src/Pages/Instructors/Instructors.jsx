@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react";
 import InstructorCard from "./InstructorCard";
 import './instructors.css'
+import useAllInstructors from "../../hooks/useAllInstructors";
+import loadingGif from "../../assets/loading_indicator.gif"
 
 
 const Instructors = () => {
+    
+    const { instructors, isLoading } = useAllInstructors()
 
-    const [instructors, setInstructors] = useState([]);
-    console.log(instructors)
-    useEffect(() => {
-        fetch("http://localhost:5000/instructors")
-          .then((res) => res.json())
-          .then((data) => {
-            const filteredClasses = data.filter(
-              (c) => !c.status || c.status === "approved"
-            );
-            setInstructors(filteredClasses);
-          });
-      }, []);
+    if(isLoading){
+        return <div className="min-h-screen flex justify-center items-center">
+            <img src={loadingGif} alt="loading" className="w-60" />
+        </div>
+    }
+
     return (
         <div className="px-2 xl:px-40 lg:px-10 py-20 homeBanner">
             <div className="text-center">
